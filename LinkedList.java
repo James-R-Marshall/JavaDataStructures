@@ -14,13 +14,19 @@ public class LinkedList<t> {
     public class node{
         node next = null; 
         t info = null;
+        int index = 0;
     }
     // this is the start of our list, we always start our itterations here
     node head = null;
     node current = head;
+    int Size = 0;
+
+
+
     public void Insert(t data){
-        System.out.println("Trying to Find Links");
         node temp = new node();
+        temp.index = Size;
+        Size++;
         temp.info = data;
         if( head == null){
             head = temp;
@@ -33,9 +39,84 @@ public class LinkedList<t> {
             }
             current.next = temp;
         }
-        System.out.println("working");
     }
 
+    public void PrintList()
+    {
+        node current = head;
+        while (current!= null)
+        {
+            System.out.println(current.info);
+            current = current.next;
+        }
+    }
 
+    public t Peek(int index)
+    {
+        node current = head;
+        if(index >= Size || Size == 0)
+        {
+            return null;
+        }
+        else
+        {
+            for(int x = 0; x < index; x++ )
+            {
+                current = current.next;
+            }
+            return current.info;
+        }
+    }
+
+    public void delete(int index)
+    {
+        node current = head;
+        node trailing = current;
+        if(index >= Size || Size == 0)
+        {
+            System.out.println("\nCannot delete index value out of range or list empty\n");
+        }
+        else
+        {
+            for(int x = 0; x < index; x++ )
+            {
+                trailing = current;
+                current = current.next;
+            }
+
+            trailing.next = current.next;
+
+        }
+    }
+
+    public void insertAt(int index, t data)
+    {
+        node temp = new node();
+        temp.info = data;
+        temp.index = Size;
+        node current = head;
+        Size++;
+        node trailing = current;
+        if(index >= Size || Size == 0)
+        {
+            head = temp;
+        }
+        else
+        {
+            for(int x = 0; x < index; x++ )
+            {
+                trailing = current;
+                current = current.next;
+            }
+
+            trailing.next = temp;
+            temp.next = current;
+
+        }
+    }
+    public int GetSize()
+    {
+        return Size;
+    }
 
 }
