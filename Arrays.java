@@ -10,6 +10,7 @@
         bt.insert(60, 60);
         bt.insert(56,56);
         bt.insert(57,57);
+       System.out.println(bt.orderedTransverse(bt.SearchBData(57)));
 
     }
 }
