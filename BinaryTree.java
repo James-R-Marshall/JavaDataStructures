@@ -114,7 +114,7 @@ class BinaryTree <t>
         }
     }
 
-
+// this one is used for finding an item by the data stored instead of the int value assigned. 
     int transverse(node current, t item)
     {
         int num = 0;
@@ -137,4 +137,57 @@ class BinaryTree <t>
     }
 
 
+    void delete(int value)
+    {
+        node current = head;
+        node trailing = current;
+        while (true)
+            {
+                
+                if(current == null)
+                {
+                    return;
+                }
+                else if(current.value == value )
+                {
+                    trailing.left = current.left;
+                    trailing.right = current.right;
+                    return;
+                }
+                else if(value <= current.value)
+                {
+                    trailing = current;
+                    current = current.left;
+                }
+                else{
+                    trailing = current;
+                    current = current.right;
+                }
+                
+            }
+    }
+    void transverse(node current)
+    {
+
+        if(current == null)
+        {
+            return;
+        }
+        else
+        {
+            System.out.println("Value = "+ current.value+ " data = " + current.data);
+            transverse(current.left);
+            transverse(current.right);
+            return;
+        }
+    }
+
+    void printList()
+    {
+        node current = head;
+        transverse(current);
+    }
+
+
 }
+
