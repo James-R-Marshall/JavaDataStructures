@@ -22,8 +22,27 @@ public class LinkedList<t> {
     int Size = 0;
 
 
-
-    public void Insert(t data){
+    private void resetIndex()
+    {
+        node holder = head;
+        for(int i = 0; i < Size;i++)
+        {
+            holder.index = i;
+            holder = holder.next;
+        }
+    }
+    public void InsertBeginning(t data){
+        node temp = new node();
+        temp.index = 0;
+        Size++;
+        temp.info = data;
+        node holder = head;
+        head = temp;
+        head.next = holder;
+        holder = head;
+        resetIndex();
+    }
+    public void InsertEnd(t data){
         node temp = new node();
         temp.index = Size;
         Size++;
@@ -85,6 +104,8 @@ public class LinkedList<t> {
             }
 
             trailing.next = current.next;
+            Size--;
+            resetIndex();
 
         }
     }
@@ -112,7 +133,10 @@ public class LinkedList<t> {
             trailing.next = temp;
             temp.next = current;
 
+            resetIndex();
+
         }
+        
     }
     public int GetSize()
     {
