@@ -1,4 +1,7 @@
 public class Stack<T> {
+ // this stack is not the most performance friendly, I will come back after the rest of the data structurs
+ // and I will create better ones
+
     LinkedList<T> container = new LinkedList<T>();
 
     int size = 0;

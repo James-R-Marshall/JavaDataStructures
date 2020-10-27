@@ -2,16 +2,16 @@
  class start
  {
     public static void main(String[] args) {
-        Stack<Integer> st = new Stack<Integer>();
-        st.push(4);
-        st.push(3);
-        st.push(2);
-        st.push(1);
-        int sz =st.size;
-        for(int i = 0; i < sz; i++)
-        {
-            System.out.println(st.pop());
-        }
+        Queue<Integer> q = new Queue<Integer>();
 
+        q.enQueue(1);
+        q.enQueue(2);
+        q.enQueue(3);
+        q.enQueue(4);
+        q.enQueue(5);
+        for(int i = 0; i < 5; i ++)
+        {
+            System.out.println(q.deQueue());
+        }
     }
 }
